@@ -1,0 +1,47 @@
+@page
+@using EncuestaRazor.Models
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model EncuestaRazor.Pages.TagHelpers
+
+@{
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<div>
+    <a asp-page="Index">Survey</a>
+    <form asp-page="Index">
+        <img src="img/ellite1.jpg" alt="elite babe" asp-append-version="true" width="255">
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="form-control">
+        </div>
+        <div class="form-group mt-3">
+            <select asp-for="SelectedNumber" asp-items="Model.Numbers" class="form-select">
+                <option value="">--Choose numbers--</option>
+            </select>
+        </div>
+        <div class="form-group mt-3">
+            <select asp-for="SelectedPerson" asp-items="@( new SelectList(Model.Persons, "Id", "Name") )" class="form-select">
+                <option value="">--Choose person--</option>
+            </select>
+        </div>
+        <div class="form-group mt-3">
+            <select asp-for="State" asp-items="@Html.GetEnumSelectList<DocumentState>()" class="form-select">
+                <option value="">--Choose state--</option>
+            </select>
+        </div>
+        <div class="form-group mt-3">
+            <label asp-for="Observations"></label>
+            <textarea asp-for="Observations" class="form-control"></textarea>
+        </div>
+    </form>
+    <partial name="_ValidationScriptsPartial"/>
+</div>
+</body>
+</html>

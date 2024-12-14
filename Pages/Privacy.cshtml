@@ -1,0 +1,82 @@
+﻿@page
+@model PrivacyModel
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>
+
+<a href="mailto:klee.collage@gmail.com">Send e-mail</a>
+<p>
+    @DateTime.Now
+</p>
+<p>
+    @* @await Foo() *@ 
+</p>
+<p>
+    Three days ago was @(DateTime.Now - TimeSpan.FromDays(3))
+</p>
+@("<h2>Hello world from razor</h2>")
+@Html.Raw("<h2>Hello world from razor</h2>")
+@{
+    var message = "Hello world";
+}
+<p>
+    @message
+</p>
+@{
+    var message2 = "This is the message 2";
+
+    string showMessageUppercase(string message)
+    {
+        return message.ToUpper();
+    }
+}
+<p>
+    @showMessageUppercase(message2)
+</p>
+@{
+    var subjectsList = new List<string>() { "computing", "music", "math", "artistic education" };
+    foreach (var subject in subjectsList)
+    {
+        // <text> SUBJECT: @subject</text><br />
+        @:Subject: @subject <br />
+    }
+
+    if (subjectsList.Count > 0)
+    {
+        <strong>You have many subjects in the semester</strong>
+    }
+    else
+    {
+        <strong>You need to add more subjects</strong>
+    }
+
+    var subjectSelected = "music";
+    var messageSubject = subjectSelected switch
+    {
+        "music" => "Great decision",
+        "computing" => "Lets keep awake on those sistems",
+        "math" => "You will help to solve existing problems",
+        "artistic education" => "Your reativity light up the world",
+        _ => "You have to choose a subject"
+    };
+}
+<h5>@messageSubject</h5>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
